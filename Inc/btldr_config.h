@@ -22,13 +22,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define DEV_FLASH_SIZE                      (128*1024)
 
 
-#define APP_OFFSET                          0x4000
+#define APP_OFFSET                          0x3800
 #define APP_ADDR                            (FLASH_BASE + APP_OFFSET)
-#define APP_SIZE                            (DEV_FLASH_SIZE - APP_OFFSET)
-#define CRC_ADDR                            (FLASH_BASE + DEV_FLASH_SIZE - 4)	//Last 32bit block of Flash
+#define APP_SIZE                            (DEV_FLASH_SIZE - APP_OFFSET - 0x800)
+#define CRC_ADDR                            (FLASH_BASE + DEV_FLASH_SIZE - 0x800 - 4)	//Last 32bit block of Flash
 
 /* In general, CONFIG_READ_FLASH should be set to 0 if CONFIG_SUPPORT_CRYPT_MODE is 1 */
-#define CONFIG_SUPPORT_CRYPT_MODE           1u
+#define CONFIG_SUPPORT_CRYPT_MODE           0u
 
 #define CONFIG_READ_FLASH                   0u
 #define CONFIG_SOFT_RESET_AFTER_IHEX_EOF    1u
@@ -36,7 +36,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 /* Options for Bootloader Activation */
 #define BTLDR_ACT_ButtonPress               1u
 #define BTLDR_ACT_NoAppExist                1u
-#define BTLDR_ACT_CksNotVld                 0u
+#define BTLDR_ACT_CksNotVld                 1u
 #define BTLDR_ACT_BootkeyDet                1u
 
 #define BOOTKEY                             0x12345678
